@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+build/
+.next/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+#Model Dataset
+ai_server/data/
+ai_server/models/
+ai_server/reports/
+# retrain_pipeline.py's staging/backup output — same idea as models/ above,
+# generated artifacts rather than source.
+ai_server/models_staging/
+ai_server/reports_staging/
+ai_server/models_backup_*/
+ai_server/reports_backup_*/
+Extra_Material/
+
+#Claude Skills
+.agents
+.claude
+
+# Python bytecode
+__pycache__/
+*.pyc
+Extra_Material/
+Extra_Material/
