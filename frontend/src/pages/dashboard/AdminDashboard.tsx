@@ -14,6 +14,7 @@ import AgentDetailsModal from './AgentDetailsModal';
 import CompliancePanel from './CompliancePanel';
 import type { FrameworkTab } from './CompliancePanel';
 import VulnerabilitiesPanel from './VulnerabilitiesPanel';
+import IpReputationPanel from './IpReputationPanel';
 import { hasIndexerConfig, searchAlerts } from './complianceApi';
 import type { WazuhAlertRow } from './complianceApi';
 import {
@@ -1679,6 +1680,8 @@ const AdminDashboard: React.FC = () => {
                   );
                 case 'Vulnerabilities':
                   return <VulnerabilitiesPanel />;
+                case 'IP Reputation':
+                  return <IpReputationPanel />;
                 case 'Detection Performance':
                   return <DetectionPerformancePanel />;
                 case 'Playbooks':
