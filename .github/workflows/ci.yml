@@ -77,7 +77,7 @@ jobs:
             ai_server/test.py ai_server/test_cas_config.py ai_server/test_real_rows.py \
             ai_server/verify_feature_cols.py \
             "ml-pipeline/flow_consumer.py" "ml-pipeline/live_feature_extractor.py" "ml-pipeline/replay_test_flows.py" \
-            "Extra_Material/Demo_Attack/attack_simulator.py" "Extra_Material/Demo_Attack/multi_target_attack_simulator.py"
+            "medisiem-integration/ml-pipeline/attack_simulator.py"
       # Unlike app.py/train.py/test.py, this one needs no trained model
       # artifacts and no third-party packages (cas_config.py/cas_engine.py
       # are pure-stdlib) — a real drift guard CI can actually execute, not
