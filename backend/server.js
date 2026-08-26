@@ -25,6 +25,7 @@ import threatIntelRoutes from './routes/threatIntel.js';
 import detectionPerformanceRoutes from './routes/detectionPerformance.js';
 import settingsRoutes from './routes/settings.js';
 import assistantRoutes from './routes/assistant.js';
+import ipReputationRoutes from './routes/ipReputation.js';
 import { startPipeline } from './services/alertPipeline.js';
 import { initCveIntel } from './services/cveIntelService.js';
 import MedicalDevice from './models/MedicalDevice.js';
@@ -108,6 +109,7 @@ app.use('/api/threat-intel', threatIntelRoutes);
 app.use('/api/detection-performance', detectionPerformanceRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/assistant', assistantRoutes);
+app.use('/api/ip-reputation', ipReputationRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'MediSIEM API is running', timestamp: new Date().toISOString() });
@@ -151,6 +153,10 @@ app.set('io', io);
 
 httpServer.listen(PORT, () => {
   console.log(`✅  MediSIEM API running on http://localhost:${PORT}`);
-  startPipeline(io);
+  if (process.env.ALERT_PIPELINE_ENABLED === 'true') {
+    startPipeline(io);
+  } else {
+    console.log('Alert pipeline disabled (ALERT_PIPELINE_ENABLED=false)');
+  }
   initCveIntel(); // best-effort CISA KEV fetch, never blocks startup
 });
