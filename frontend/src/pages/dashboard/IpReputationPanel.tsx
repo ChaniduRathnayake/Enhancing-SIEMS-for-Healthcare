@@ -4,9 +4,7 @@ import {
   Network,
   Search,
   Loader2,
-  ShieldAlert,
   ShieldCheck,
-  Globe,
   AlertCircle,
   RefreshCw,
 } from 'lucide-react';
@@ -194,8 +192,8 @@ function friendlyDecision(
     textValue(value, 'Unavailable');
 
   return text
-    .replaceAll('_', ' ')
-    .replace(/\b\w/g, (letter) =>
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (letter: string) =>
       letter.toUpperCase()
     );
 }
@@ -708,11 +706,6 @@ const IpReputationPanel: React.FC = () => {
       internalIntelligence?.memberships
     );
 
-
-  const localOperational =
-    asRecord(
-      operational?.local_ml_context
-    );
 
 
   const wazuh =
